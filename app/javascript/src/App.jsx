@@ -1,11 +1,13 @@
 import React from "react";
 import Dashboard from "components/Dashboard";
 
+import CreateTask from "components/Tasks/CreateTask";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 const App = () => {
   return (
     <Router>
       <Switch>
+        <Route exact path="/tasks/create" component={CreateTask} />
         <Route exact path="/dashboard" component={Dashboard} />
       </Switch>
     </Router>
