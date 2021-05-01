@@ -2,6 +2,7 @@ class TasksController < ApplicationController
 
   # before_action :load_task, only: [:show]
   # before_action :load_task, only: %i[show update]
+  before_action :authenticate_user_using_x_auth_token, except: [:new, :edit]
   before_action :load_task, only: %i[show update destroy]
 
 
@@ -21,15 +22,14 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = Task.new(task_params.merge(creator_id: @current_user.id))
+    authorize @task
     if @task.save
       render status: :ok, json: { notice: t('successfully_created', entity: 'Task') }
     else
-      errors = @task.errors.full_messages
-      render status: :unprocessable_entity, json: { errors: errors  }
+      errors = @task.errors.full_messages.to_sentence
+      render status: :unprocessable_entity, json: { errors: errors }
     end
-  rescue ActiveRecord::RecordNotUnique => e
-    render status: :unprocessable_entity, json: { errors: e.message }
   end
 
   def update

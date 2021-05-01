@@ -1,9 +1,10 @@
 module.exports = {
   resolve: {
-      alias: {
-          apis: "src/apis",
-          common: "src/common",
-          components: "src/components",
-      },
+    alias: {
+      apis: "src/apis",
+      helpers: "src/helpers",
+      common: "src/common",
+      components: "src/components",
+    },
   },
 };

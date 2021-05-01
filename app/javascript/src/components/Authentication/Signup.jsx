@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+const logger = require("js-logger");
 import SignupForm from "components/Authentication/Form/SignupForm";
 import authApi from "apis/auth";
 
