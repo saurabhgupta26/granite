@@ -13,7 +13,9 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find_by_slug!(params[:slug])
-    render status: :ok, json: { task: @task }
+    task_creator = User.find(@task.creator_id).name
+    render status: :ok, json: { task: @task,assigned_user: @task.user,
+      task_creator: task_creator }
     rescue ActiveRecord::RecordNotFound => errors
       render json: {errors: errors}, status: :not_found
   end
@@ -50,7 +52,8 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title)
+    params.require(:task).permit(:title, :user_id)
+
   end
 
   def load_task
