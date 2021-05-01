@@ -11,6 +11,10 @@ const ShowTask = () => {
   const [pageLoading, setPageLoading] = useState(true);
   const [assignedUser, setAssignedUser] = useState([]);
 
+  const updateTask = () => {
+    history.push(`/tasks/${taskDetails.slug}/edit`);
+  };
+
   const fetchTaskDetails = async () => {
     try {
       const response = await tasksApi.show(slug);

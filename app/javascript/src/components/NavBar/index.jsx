@@ -4,6 +4,7 @@ import authApi from "apis/auth";
 import Toastr from "components/Common/Toastr";
 import { resetAuthTokens } from "src/apis/axios.js";
 import { getFromLocalStorage, setToLocalStorage } from "helpers/storage";
+const logger = require("js-logger");
 
 const NavBar = () => {
   const userName = getFromLocalStorage("authUserName");
