@@ -4,8 +4,10 @@ class TasksController < ApplicationController
 
   def index
     tasks = policy_scope(Task)
+    pending_tasks = tasks.pending
+    completed_tasks = tasks.completed
+    render status: :ok, json: { tasks: { pending: pending_tasks, completed: completed_tasks } }
 
-    render status: :ok, json: { tasks: tasks }
   end
 
   def create
@@ -22,9 +24,10 @@ class TasksController < ApplicationController
 
   def show
     authorize @task
-    task_creator = User.find(@task.creator_id).name
-    render status: :ok, json: { task: @task, assigned_user: @task.user,
-                                task_creator: task_creator }
+      comments = @task.comments.order('created_at DESC')
+      task_creator = User.find(@task.creator_id).name
+      render status: :ok, json: { task: @task, assigned_user: @task.user,
+                                  comments: comments, task_creator: task_creator }
   end
 
   def update
@@ -56,7 +59,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :user_id, :authorize_owner)
+    params.require(:task).permit(:title, :user_id, :authorize_owner, :progress, :status)
   end
 
   def load_task

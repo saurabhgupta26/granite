@@ -6,6 +6,7 @@ import PageLoader from "components/PageLoader";
 import { useParams } from "react-router-dom";
 
 import TaskForm from "./Form/TaskForm";
+const logger = require("js-logger");
 
 const EditTask = ({ history }) => {
   const [title, setTitle] = useState("");
