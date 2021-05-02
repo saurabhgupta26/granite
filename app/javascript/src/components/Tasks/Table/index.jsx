@@ -19,9 +19,9 @@ const Table = ({
               <TableHeader type={type} />
               <TableRow
                 data={data}
+                type={type}
                 destroyTask={destroyTask}
                 showTask={showTask}
-                type={type}
                 handleProgressToggle={handleProgressToggle}
                 starTask={starTask}
               />
