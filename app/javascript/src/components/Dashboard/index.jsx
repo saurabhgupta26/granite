@@ -7,6 +7,7 @@ import Table from "components/Tasks/Table/index";
 import PageLoader from "components/PageLoader";
 import tasksApi from "apis/tasks";
 import { setAuthHeaders } from "apis/axios";
+const logger = require("js-logger");
 
 const Dashboard = ({ history }) => {
   const [pendingTasks, setPendingTasks] = useState([]);
