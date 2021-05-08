@@ -1,5 +1,5 @@
 import React from "react";
-import classnames from "classnames";
+import classNames from "classnames";
 import PropTypes from "prop-types";
 
 const TableRow = ({
@@ -32,7 +32,7 @@ const TableRow = ({
             />
           </td>
           <td
-            className={classnames(
+            className={classNames(
               "px-6 py-4 text-sm font-medium leading-5 whitespace-no-wrap text-bb-purple",
               {
                 "cursor-pointer": !isCompleted,
@@ -53,7 +53,7 @@ const TableRow = ({
               </td>
               <td className="pl-6 py-4 text-center cursor-pointer">
                 <i
-                  className={classnames(
+                  className={classNames(
                     "transition duration-300 ease-in-out text-2xl hover:text-bb-yellow p-1",
                     {
                       "text-bb-border ri-star-line":
