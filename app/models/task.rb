@@ -6,8 +6,9 @@ class Task < ApplicationRecord
   has_many :comments, dependent: :destroy
   validates :slug, uniqueness: true
   validate :slug_not_changed
-  before_create :set_slug
 
+  before_create :set_slug
+  # after_create :log_task_details
 
   private
 
@@ -20,9 +21,10 @@ class Task < ApplicationRecord
       itr += 1
     end
   end
+
   def slug_not_changed
     if slug_changed? && self.persisted?
-      errors.add(:slug, t('task.slug.immutable'))
+      errors.add(:slug, I18n.t('task.slug.immutable'))
     end
   end
 
@@ -32,4 +34,8 @@ class Task < ApplicationRecord
     unstarred = send(progress).unstarred
     starred + unstarred
   end
+
+  # def log_task_details
+  #   TaskLoggerJob.perform_later(self)
+  # end
 end
