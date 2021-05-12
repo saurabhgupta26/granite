@@ -9,6 +9,7 @@ class Task < ApplicationRecord
 
   before_create :set_slug
   after_create :log_task_details
+  after_commit :log_task_details, on: :create
 
   private
 
