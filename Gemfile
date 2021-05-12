@@ -8,7 +8,6 @@ gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4', :group => [:development, :test]
 
-gem 'pg', :group => [:production]
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
@@ -59,5 +58,8 @@ gem 'react-rails'
 gem 'bcrypt', '~> 3.1.13'
 gem "pundit"
 gem 'bundler-audit', require: false
+gem 'ruby_audit', require: false
+gem 'rake', '~> 13.0.3'
 gem "sidekiq"
+gem 'pg', :group => [:production]
 
