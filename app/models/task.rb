@@ -8,7 +8,7 @@ class Task < ApplicationRecord
   validate :slug_not_changed
 
   before_create :set_slug
-  # after_create :log_task_details
+  after_create :log_task_details
 
   private
 
@@ -35,7 +35,7 @@ class Task < ApplicationRecord
     starred + unstarred
   end
 
-  # def log_task_details
-  #   TaskLoggerJob.perform_later(self)
-  # end
+  def log_task_details
+    TaskLoggerJob.perform_later(self)
+  end
 end
