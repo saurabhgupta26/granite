@@ -35,7 +35,6 @@
     "husky": ">=6",
     "lint-staged": ">=10",
     "prettier": "^2.2.1",
-    "tailwindcss": "1.9.6",
     "webpack-dev-server": "^3.11.2"
   },
   "lint-staged": {
