@@ -37,9 +37,12 @@
     "prettier": "^2.2.1",
     "webpack-dev-server": "^3.11.2"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write",
     "app/**/*.{html,md,js,jsx,json,yml}": [
       "prettier --write",
       "eslint --fix"
@@ -47,10 +50,5 @@
   },
   "scripts": {
     "prepare": "husky install"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }
